@@ -12,6 +12,9 @@ BOT_NAME = "elscraper"
 SPIDER_MODULES = ["elscraper.spiders"]
 NEWSPIDER_MODULE = "elscraper.spiders"
 
+FEEDS = {
+    'booksdata.json': {'format': 'json'}
+}
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "elscraper (+http://www.yourdomain.com)"
@@ -63,7 +66,8 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   "elscraper.pipelines.ElscraperPipeline": 300,
+    "elscraper.pipelines.ElscraperPipeline": 300,
+    "elscraper.pipelines.SaveToMySqlPipeline": 400,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
